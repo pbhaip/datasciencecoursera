@@ -1,29 +1,67 @@
 # DATA DICTIONARY - tidy_data
 
-# Project description
+## Project description
 The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist.The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data. 
 
-# Summary :
+## Summary :
 1. Selected columns were used from the supplied dataset containing mean and standard deviation in the column names. (86 columns out of total 561 test and training data contained mean and standard deviation)
 2. Names were standardized for the dataframe columns
-3. Activity description was added to the data set. Activity Id was maintained since sorting by acivity description will not have intended results if the activity sequence is to be maintained in final output
-4. The test data set and training data set are combined together
-5. Average of each measured variable (86 variables) for each activity and each subject was computed. The data set was grouped by Subject_Id,Activity_Id,Activity_desc and mean was calculated for all the measured variables
+3. Activity description was added to the data set. Activity_Id was maintained since sorting by acivity description will not have intended results if the activity sequence is to be maintained in final output
+4. The test data set and training data set are combined together into a single dataset
+5. From this combined set, average of each measured variable (86 variables) for each activity and each subject was computed. The data set was grouped by Subject_Id,Activity_Id,Activity_desc and mean was calculated for all the measured variables
 6. Accompanying README.md provides details of the overall process of tidy data preparation.
 
-General Note :
+## General Notes :
 1. Variable prefix
 "t" prefix denotes time domain signal
 "f" prefix denotes frequency domain signal
+
 2. Aggregate Variables follow Activity_desc and are averaged by Subject Id, Activity Id and Activity_desc
-3. The tidy dataset units are as follows
 
-  Column 1    : Subject_Id  - Number of persons (volunteers)
-  Column 2    : Activity_Id - Type of activity
-  Column 3    : Activity_desc - Text explaining activity
-  Column 4-88 : The remaining aggregate values have been normalized to [-1..+1]. The normalization would have impacted the original unit of measure. 
+3. Note about Data source variables   
+ + tAcc-XYZ, tGyro-XYZ : The features selected for this database come from the accelerometer and gyroscope are time domain signals and are 3-axial raw signals.(captured at 50Hz)  
+ + Body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ)  were filtered at 0.3Hz  
+ + Body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). 
+ + Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag).   
+ + Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals).
+ + These signals were used to estimate variables of the feature vector for each pattern:  
+'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
+      tBodyAcc-XYZ  
+      tGravityAcc-XYZ  
+      tBodyAccJerk-XYZ  
+      tBodyGyro-XYZ  
+      tBodyGyroJerk-XYZ  
+      tBodyAccMag  
+      tGravityAccMag  
+      tBodyAccJerkMag  
+      tBodyGyroMag  
+      tBodyGyroJerkMag  
+      fBodyAcc-XYZ  
+      fBodyAccJerk-XYZ  
+      fBodyGyro-XYZ  
+      fBodyAccMag  
+      fBodyAccJerkMag  
+      fBodyGyroMag  
+      fBodyGyroJerkMag  
+ + Additional vectors obtained by averaging the signals in a signal window sample. These are used on the angle() variable:
+      gravityMean  
+      tBodyAccMean  
+      tBodyAccJerkMean  
+      tBodyGyroMean  
+      tBodyGyroJerkMean      
+ + The set of variables picked up for preparing Tidy dataset included only mean & standard deviation (86 out of 561): 
+    mean(): Mean value  
+    std(): Standard deviation  
+    meanFreq(): Weighted average of the frequency components to obtain a mean frequency  
 
-# tidy_data set
+4. The tidy dataset units are as follows
+
+    Column 1    : Subject_Id  - Number of persons (volunteers)  
+    Column 2    : Activity_Id - Type of activity  
+    Column 3    : Activity_desc - Text explaining activity  
+    Column 4-88 : The remaining aggregate values have been normalized to [-1..+1]. The normalization would have        impacted the original unit of measurure. These normalized values have no units.
+
+## Tidy_data complete set
              
     Subject_Id    2
       Subject Identifier
@@ -31,10 +69,10 @@ General Note :
             
     Activity_Id   1
       Activity Identifier 
-            1..6      Uniques identifier describing the activity
+            1..6      Unique identifier describing the activity
             
     Activity_desc Text string 17
-            Text string identifying the activity 
+            Text string identifying the activity details
         WALKING             (Activity Id = 1)
         WALKING_UPSTAIRS    (Activity Id = 2)
         WALKING_DOWNSTAIRS  (Activity Id = 3)  
@@ -110,8 +148,8 @@ General Note :
       Mean value of Body acceleration Jerk signal in Y direction
                   -1.000000000000000 ..+1.000000000000000
 
-    tBodyAccJerk.std.Z    18
-      Mean value of Body acceleration Jerk signal in Z direction
+    tBodyAccJerk.std.Z    18  
+      Mean value of Body acceleration Jerk signal in Z direction  
                   -1.000000000000000 ..+1.000000000000000
 
     tBodyGyro.mean.X        18
@@ -182,7 +220,7 @@ General Note :
         Mean of Body Acceleration Jerk Magnitude signal
                   -1.000000000000000 ..+1.000000000000000
         
-    tBodyAccJerkMag.std   18
+    tBodyAccJerkMag.std   18  
         Standard deviation of Body Acceleration Jerk Magnitude signal
                   -1.000000000000000 ..+1.000000000000000
 
@@ -258,17 +296,17 @@ General Note :
         Body Aceleration Jerk standard deviation for signal in Y direction
                   -1.000000000000000 ..+1.000000000000000
 
-    fBodyAccJerk.std.Z   18
+    fBodyAccJerk.std.Z   18  
         Body Aceleration Jerk standard deviation for signal in Z direction
-                  -1.000000000000000 ..+1.000000000000000
-                  
-   fBodyAccJerk.meanFreq.X 18
-      Mean value of Body acceleration Jerk signal in X direction (freq domain)
-                  -1.000000000000000 ..+1.000000000000000
+                  -1.000000000000000 ..+1.000000000000000  
 
-    fBodyAccJerk.meanFreq.Y 18
-      Mean value of Body acceleration Jerk signal in Y direction (freq domain)
-                  -1.000000000000000 ..+1.000000000000000
+    fBodyAccJerk.meanFreq.X 18  
+      Mean value of Body acceleration Jerk signal in X direction (freq domain)  
+                  -1.000000000000000 ..+1.000000000000000  
+
+    fBodyAccJerk.meanFreq.Y 18  
+      Mean value of Body acceleration Jerk signal in Y direction (freq domain)  
+                  -1.000000000000000 ..+1.000000000000000  
 
     fBodyAccJerk.meanFreq.Z 18
       Mean value of Body acceleration Jerk signal in Z direction (freq domain)
@@ -375,7 +413,7 @@ General Note :
                   -1.000000000000000 ..+1.000000000000000
 
     angle.X.gravityMean   18
-      Angle mean for gravity in X direction
+      Angle mean for gravity in X direction  
                   -1.000000000000000 ..+1.000000000000000
 
     angle.Y.gravityMean   18
@@ -386,105 +424,3 @@ General Note :
       Angle mean for gravity in Z direction
                   -1.000000000000000 ..+1.000000000000000
                   
-# Lookup Table                  
-Lookup table to map tidy dataset output column to data source column names                   
-|------------------------------------|---------------------------------------------|---------------------------|
-|    Tidy data set 1..3              | Column details in Source file               | Column No in source       |
-|------------------------------------|---------------------------------------------|---------------------------|
-|    Subject_Id                      | Subject (Source -Subject_test/Subject_train |                          1|
-|    Activity_Id                     | Activity (Source file - y_test, y_train     |                          1|
-|    Activity_desc                   | Activity description (in README.txt)        |                           |
-|------------------------------------|---------------------------------------------|---------------------------|
-|    Tidy data set 4..89             | Column No in Source file                    | Column No X_test, X_train |
-|------------------------------------|---------------------------------------------|---------------------------|
-|    tBodyAcc.mean.X                 | tBodyAcc-mean()-X                           |                          1|
-|    tBodyAcc.mean.Y                 | tBodyAcc-mean()-Y                           |                          2|
-|    tBodyAcc.mean.Z                 | tBodyAcc-mean()-Z                           |                          3|
-|    tBodyAcc.std.X                  | tBodyAcc-std()-X                            |                          4|
-|    tBodyAcc.std.Y                  | tBodyAcc-std()-Y                            |                          5|
-|    tBodyAcc.std.Z                  | tBodyAcc-std()-Z                            |                          6|
-|    tGravityAcc.mean.X              | tGravityAcc-mean()-X                        |                         41|
-|    tGravityAcc.mean.Y              | tGravityAcc-mean()-Y                        |                         42|
-|    tGravityAcc.mean.Z              | tGravityAcc-mean()-Z                        |                         43|
-|    tGravityAcc.std.X               | tGravityAcc-std()-X                         |                         44|
-|    tGravityAcc.std.Y               | tGravityAcc-std()-Y                         |                         45|
-|    tGravityAcc.std.Z               | tGravityAcc-std()-Z                         |                         46|
-|    tBodyAccJerk.mean.X             | tBodyAccJerk-mean()-X                       |                         81|
-|    tBodyAccJerk.mean.Y             | tBodyAccJerk-mean()-Y                       |                         82|
-|    tBodyAccJerk.mean.Z             | tBodyAccJerk-mean()-Z                       |                         83|
-|    tBodyAccJerk.std.X              | tBodyAccJerk-std()-X                        |                         84|
-|    tBodyAccJerk.std.Y              | tBodyAccJerk-std()-Y                        |                         85|
-|    tBodyAccJerk.std.Z              | tBodyAccJerk-std()-Z                        |                         86|
-|    tBodyGyro.mean.X                | tBodyGyro-mean()-X                          |                        121|
-|    tBodyGyro.mean.Y                | tBodyGyro-mean()-Y                          |                        122|
-|    tBodyGyro.mean.Z                | tBodyGyro-mean()-Z                          |                        123|
-|    tBodyGyro.std.X                 | tBodyGyro-std()-X                           |                        124|
-|    tBodyGyro.std.Y                 | tBodyGyro-std()-Y                           |                        125|
-|    tBodyGyro.std.Z                 | tBodyGyro-std()-Z                           |                        126|
-|    tBodyGyroJerk.mean.X            | tBodyGyroJerk-mean()-X                      |                        161|
-|    tBodyGyroJerk.mean.Y            | tBodyGyroJerk-mean()-Y                      |                        162|
-|    tBodyGyroJerk.mean.Z            | tBodyGyroJerk-mean()-Z                      |                        163|
-|    tBodyGyroJerk.std.X             | tBodyGyroJerk-std()-X                       |                        164|
-|    tBodyGyroJerk.std.Y             | tBodyGyroJerk-std()-Y                       |                        165|
-|    tBodyGyroJerk.std.Z             | tBodyGyroJerk-std()-Z                       |                        166|
-|    tBodyAccMag.mean                | tBodyAccMag-mean()                          |                        201|
-|    tBodyAccMag.std                 | tBodyAccMag-std()                           |                        202|
-|    tGravityAccMag.mean             | tGravityAccMag-mean()                       |                        214|
-|    tGravityAccMag.std              | tGravityAccMag-std()                        |                        215|
-|    tBodyAccJerkMag.mean            | tBodyAccJerkMag-mean()                      |                        227|
-|    tBodyAccJerkMag.std             | tBodyAccJerkMag-std()                       |                        228|
-|    tBodyGyroMag.mean               | tBodyGyroMag-mean()                         |                        240|
-|    tBodyGyroMag.std                | tBodyGyroMag-std()                          |                        241|
-|    tBodyGyroJerkMag.mean           | tBodyGyroJerkMag-mean()                     |                        253|
-|    tBodyGyroJerkMag.std            | tBodyGyroJerkMag-std()                      |                        254|
-|    fBodyAcc.mean.X                 | fBodyAcc-mean()-X                           |                        266|
-|    fBodyAcc.mean.Y                 | fBodyAcc-mean()-Y                           |                        267|
-|    fBodyAcc.mean.Z                 | fBodyAcc-mean()-Z                           |                        268|
-|    fBodyAcc.std.X                  | fBodyAcc-std()-X                            |                        269|
-|    fBodyAcc.std.Y                  | fBodyAcc-std()-Y                            |                        270|
-|    fBodyAcc.std.Z                  | fBodyAcc-std()-Z                            |                        271|
-|    fBodyAcc.meanFreq.X             | fBodyAcc-meanFreq()-X                       |                        294|
-|    fBodyAcc.meanFreq.Y             | fBodyAcc-meanFreq()-Y                       |                        295|
-|    fBodyAcc.meanFreq.Z             | fBodyAcc-meanFreq()-Z                       |                        296|
-|    fBodyAccJerk.mean.X             | fBodyAccJerk-mean()-X                       |                        345|
-|    fBodyAccJerk.mean.Y             | fBodyAccJerk-mean()-Y                       |                        346|
-|    fBodyAccJerk.mean.Z             | fBodyAccJerk-mean()-Z                       |                        347|
-|    fBodyAccJerk.std.X              | fBodyAccJerk-std()-X                        |                        348|
-|    fBodyAccJerk.std.Y              | fBodyAccJerk-std()-Y                        |                        349|
-|    fBodyAccJerk.std.Z              | fBodyAccJerk-std()-Z                        |                        350|
-|    fBodyAccJerk.meanFreq.X         | fBodyAccJerk-meanFreq()-X                   |                        373|
-|    fBodyAccJerk.meanFreq.Y         | fBodyAccJerk-meanFreq()-Y                   |                        374|
-|    fBodyAccJerk.meanFreq.Z         | fBodyAccJerk-meanFreq()-Z                   |                        375|
-|    fBodyGyro-mean-X                | fBodyGyro-mean()-X                          |                        424|
-|    fBodyGyro-mean-Y                | fBodyGyro-mean()-Y                          |                        425|
-|    fBodyGyro-mean-Z                | fBodyGyro-mean()-Z                          |                        426|
-|    fBodyGyro.std.X                 | fBodyGyro-std()-X                           |                        427|
-|    fBodyGyro.std.Y                 | fBodyGyro-std()-Y                           |                        428|
-|    fBodyGyro.std.Z                 | fBodyGyro-std()-Z                           |                        429|
-|    fBodyGyro.meanFreq.X            | fBodyGyro-meanFreq()-X                      |                        452|
-|    fBodyGyro.meanFreq.Y            | fBodyGyro-meanFreq()-Y                      |                        453|
-|    fBodyGyro.meanFreq.Z            | fBodyGyro-meanFreq()-Z                      |                        454|
-|    fBodyAccMag.mean                | fBodyAccMag-mean()                          |                        503|
-|    fBodyAccMag.std                 | fBodyAccMag-std()                           |                        504|
-|    fBodyAccMag.meanFreq            | fBodyAccMag-meanFreq()                      |                        513|
-|    fBodyBodyAccJerkMag.mean        | fBodyBodyAccJerkMag-mean()                  |                        516|
-|    fBodyBodyAccJerkMag.std         | fBodyBodyAccJerkMag-std()                   |                        517|
-|    fBodyBodyAccJerkMag.meanFreq    | fBodyBodyAccJerkMag-meanFreq()              |                        526|
-|    fBodyBodyGyroMag.mean           | fBodyBodyGyroMag-mean()                     |                        529|
-|    fBodyBodyGyroMag.std            | fBodyBodyGyroMag-std()                      |                        530|
-|    fBodyBodyGyroMag.meanFreq       | fBodyBodyGyroMag-meanFreq()                 |                        539|
-|    fBodyBodyGyroJerkMag.mean       | fBodyBodyGyroJerkMag-mean()                 |                        542|
-|    fBodyBodyGyroJerkMag.std        | fBodyBodyGyroJerkMag-std()                  |                        543|
-|    fBodyBodyGyroJerkMag.meanFreq   | fBodyBodyGyroJerkMag-meanFreq()             |                        552|
-|    angle.tBodyAccMean.gravity      | angle(tBodyAccMean,gravity)                 |                        555|
-|    angle.tBodyAccJerkMean.gravityMe| angle(tBodyAccJerkMean),gravityMean)        |                        556|
-|    angle.tBodyGyroMean.gravityMean | angle(tBodyGyroMean,gravityMean)            |                        557|
-|    angle.tBodyGyroJerkMean.gravityM| angle(tBodyGyroJerkMean,gravityMean)        |                        558|
-|    angle.X.gravityMean             | angle(X,gravityMean)                        |                        559|
-|    angle.Y.gravityMean             | angle(Y,gravityMean)                        |                        560|
-|    angle.Z.gravityMean             | angle(Z,gravityMean)                        |                        561|
-|------------------------------------|---------------------------------------------|---------------------------|
-
-
-
-   
